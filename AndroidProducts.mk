@@ -15,4 +15,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/omni_begonia.mk
+    $(LOCAL_DIR)/omni_merlin.mk

@@ -1,5 +1,5 @@
 ro.mediatek.chip_ver=S01
-ro.mediatek.platform=MT6785
+ro.mediatek.platform=MT6768
 ro.mtk_tee_gp_support=1
 ro.mtk_microtrust_tee_support=1
 ro.mtk_soter_support=1

@@ -2,30 +2,29 @@
     Input:
         manifest.xml
         manifest.xml
-        manifest_gpunn_neuron-ann.xml
-        manifest_target_level_p.xml
+        manifest_target_level_q.xml
         manifest_audio.xml
         manifest_dsds.xml
         manifest_radioconfig.xml
         manifest_em.xml
-        manifest_bgservice.xml
         manifest_op_dsds.xml
         manifest_wifi.xml
         manifest_videotelephony.xml
         manifest_ir.xml
-        manifest_km3.xml
+        manifest_km4.xml
         manifest_tee.xml
         manifest.microtrust.xml
-        manifest_wechat.xml
         manifest_log.xml
         manifest_mdmonitor.xml
         manifest_netdagent.xml
         manifest_pq.xml
         manifest_mmservice.xml
+        manifest_dmc.xml
+        manifest_apmonitor.xml
         manifest_gnss.xml
         manifest.xml
 -->
-<manifest version="1.0" type="device" target-level="3">
+<manifest version="1.0" type="device" target-level="4">
     <hal format="hidl">
         <name>android.hardware.audio</name>
         <transport>hwbinder</transport>
@@ -116,16 +115,6 @@
         <fqname>@1.2::IDrmFactory/widevine</fqname>
     </hal>
     <hal format="hidl">
-        <name>android.hardware.dumpstate</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IDumpstateDevice</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@1.0::IDumpstateDevice/default</fqname>
-    </hal>
-    <hal format="hidl">
         <name>android.hardware.gatekeeper</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -200,12 +189,12 @@
     <hal format="hidl">
         <name>android.hardware.keymaster</name>
         <transport>hwbinder</transport>
-        <version>3.0</version>
+        <version>4.0</version>
         <interface>
             <name>IKeymasterDevice</name>
             <instance>default</instance>
         </interface>
-        <fqname>@3.0::IKeymasterDevice/default</fqname>
+        <fqname>@4.0::IKeymasterDevice/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.light</name>
@@ -241,28 +230,6 @@
             <instance>default</instance>
         </interface>
         <fqname>@1.0::IMemtrack/default</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>android.hardware.neuralnetworks</name>
-        <transport>hwbinder</transport>
-        <version>1.1</version>
-        <interface>
-            <name>IDevice</name>
-            <instance>gpunn</instance>
-            <instance>neuron-ann</instance>
-        </interface>
-        <fqname>@1.1::IDevice/gpunn</fqname>
-        <fqname>@1.1::IDevice/neuron-ann</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>android.hardware.nfc</name>
-        <transport>hwbinder</transport>
-        <version>1.1</version>
-        <interface>
-            <name>INfc</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@1.1::INfc/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.power</name>
@@ -334,26 +301,14 @@
         <fqname>@1.0::IDevice/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>android.hardware.secure_element</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>ISecureElement</name>
-            <instance>SIM1</instance>
-            <instance>eSE1</instance>
-        </interface>
-        <fqname>@1.0::ISecureElement/SIM1</fqname>
-        <fqname>@1.0::ISecureElement/eSE1</fqname>
-    </hal>
-    <hal format="hidl">
         <name>android.hardware.sensors</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>2.0</version>
         <interface>
             <name>ISensors</name>
             <instance>default</instance>
         </interface>
-        <fqname>@1.0::ISensors/default</fqname>
+        <fqname>@2.0::ISensors/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.soundtrigger</name>
@@ -430,9 +385,19 @@
         <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
+            <name>IFingerprintEngineering</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IFingerprintNavigation</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
             <name>IFingerprintSensorTest</name>
             <instance>default</instance>
         </interface>
+        <fqname>@1.0::IFingerprintEngineering/default</fqname>
+        <fqname>@1.0::IFingerprintNavigation/default</fqname>
         <fqname>@1.0::IFingerprintSensorTest/default</fqname>
     </hal>
     <hal format="hidl">
@@ -443,12 +408,17 @@
             <name>IGoodixFingerprintDaemon</name>
             <instance>default</instance>
         </interface>
-        <interface>
-            <name>IGoodixFingerprintDaemonExt</name>
-            <instance>default</instance>
-        </interface>
         <fqname>@2.1::IGoodixFingerprintDaemon/default</fqname>
-        <fqname>@2.1::IGoodixFingerprintDaemonExt/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.mediatek.hardware.apmonitor</name>
+        <transport>hwbinder</transport>
+        <version>2.0</version>
+        <interface>
+            <name>IApmService</name>
+            <instance>apm_hidl_service</instance>
+        </interface>
+        <fqname>@2.0::IApmService/apm_hidl_service</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.mediatek.hardware.atci</name>
@@ -461,56 +431,6 @@
         <fqname>@1.0::IAtcid/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>vendor.mediatek.hardware.camera.atms</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IATMs</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@1.0::IATMs/default</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.mediatek.hardware.camera.bgservice</name>
-        <transport>hwbinder</transport>
-        <version>1.1</version>
-        <interface>
-            <name>IBGService</name>
-            <instance>internal/0</instance>
-        </interface>
-        <fqname>@1.1::IBGService/internal/0</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.mediatek.hardware.camera.ccap</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>ICCAPControl</name>
-            <instance>internal/0</instance>
-        </interface>
-        <fqname>@1.0::ICCAPControl/internal/0</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.mediatek.hardware.camera.lomoeffect</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>ILomoEffect</name>
-            <instance>internal/0</instance>
-        </interface>
-        <fqname>@1.0::ILomoEffect/internal/0</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.mediatek.hardware.camera.postproc</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IPostDevice</name>
-            <instance>internal/0</instance>
-        </interface>
-        <fqname>@1.0::IPostDevice/internal/0</fqname>
-    </hal>
-    <hal format="hidl">
         <name>vendor.mediatek.hardware.dfps</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -519,6 +439,16 @@
             <instance>default</instance>
         </interface>
         <fqname>@1.0::IFpsPolicyService/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.mediatek.hardware.dmc</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IDmcService</name>
+            <instance>dmc_hidl_service</instance>
+        </interface>
+        <fqname>@1.0::IDmcService/dmc_hidl_service</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.mediatek.hardware.engineermode</name>
@@ -782,24 +712,14 @@
         <fqname>@1.0::ISoter/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>vendor.nxp.hardware.nfc</name>
+        <name>vendor.microtrust.hardware.thh</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>2.0</version>
         <interface>
-            <name>INqNfc</name>
+            <name>IThhDevice</name>
             <instance>default</instance>
         </interface>
-        <fqname>@1.0::INqNfc/default</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.xiaomi.hardware.citsensorservice</name>
-        <transport>hwbinder</transport>
-        <version>1.1</version>
-        <interface>
-            <name>ICitSensorService</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@1.1::ICitSensorService/default</fqname>
+        <fqname>@2.0::IThhDevice/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.xiaomi.hardware.displayfeature</name>
